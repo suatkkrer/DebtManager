@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient2"
+    android:background="#f3f3f3"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -14,12 +14,12 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
-            app:tabIndicatorColor="#20cceb"
+            app:tabIndicatorColor="#f3f3f3"
             android:layout_width="match_parent"
-            android:background="@drawable/gradient2"
-            app:tabTextColor="#eeeeee"
+            android:background="#fa5b62"
+            app:tabTextColor="#642427"
             app:tabIconTint="@color/your_color_selector"
-            app:tabSelectedTextColor="#20cceb"
+            app:tabSelectedTextColor="#f3f3f3"
             android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabItem
