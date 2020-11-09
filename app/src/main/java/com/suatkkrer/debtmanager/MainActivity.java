@@ -36,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String fragment = intent.getStringExtra("income");
-
-
-
+        String fragmet2 = intent.getStringExtra("outcome");
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
 
@@ -52,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewPagerAdapter.addFragment(mainFragment,"Home Page");
         viewPagerAdapter.addFragment(incomeFragment,"Income");
-        viewPagerAdapter.addFragment(outcomeFragment,"Outcome");
+        viewPagerAdapter.addFragment(outcomeFragment,"Expense");
 
         viewPager.setAdapter(viewPagerAdapter);
 
@@ -61,9 +59,10 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(R.drawable.outcome);
 
         if (fragment != null) {
-            if (fragment.equals("income")) {
                 viewPager.setCurrentItem(1);
-            }
+        }
+        if (fragmet2 != null){
+            viewPager.setCurrentItem(2);
         }
 
     }

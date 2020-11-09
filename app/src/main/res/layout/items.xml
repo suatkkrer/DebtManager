@@ -3,16 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/relativeLayoutAlacak"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="124dp"
         android:maxHeight="80dp"
         android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,6 +32,7 @@
 
 
         <TextView
+            android:id="@+id/nameAlacak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -44,6 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tarihAlacak"
             android:text="09.11.2020"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
@@ -51,6 +50,7 @@
             />
 
         <TextView
+            android:id="@+id/paraAlacak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$50,00"

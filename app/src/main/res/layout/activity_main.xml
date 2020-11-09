@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:icon="@drawable/outcome"
-                android:text="@string/outcome"/>
+                android:text="@string/expense"/>
 
         </com.google.android.material.tabs.TabLayout>
 
