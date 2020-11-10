@@ -1,7 +1,10 @@
 package com.suatkkrer.debtmanager;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -123,6 +126,8 @@ public class addIncome extends AppCompatActivity {
             }
         }
     }
+
+
 
     public void saveIncome(View view) {
 

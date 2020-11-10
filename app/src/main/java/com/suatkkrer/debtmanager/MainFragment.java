@@ -42,6 +42,7 @@ public class MainFragment extends Fragment {
     PieChart pieChart;
     int totalIncome = 0;
     int totalOutcome = 0;
+
     String[] money = {"Credit","Debt"};
     int[] amount = {totalIncome,totalOutcome};
 
@@ -52,6 +53,9 @@ public class MainFragment extends Fragment {
         v = inflater.inflate(R.layout.mainfragment,container,false);
 
         pieChart = v.findViewById(R.id.pieChart);
+
+        totalIncome = 0;
+        totalOutcome = 0;
 
         if (totalIncome == 0 && totalOutcome == 0) {
 
@@ -68,9 +72,9 @@ public class MainFragment extends Fragment {
                 while (cursor.moveToNext()) {
                     String income = cursor.getString(incomeAmount);
                     totalIncome += Integer.parseInt(income);
+
                 }
 
-                System.out.println(totalIncome);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -90,6 +94,7 @@ public class MainFragment extends Fragment {
                 while (cursor.moveToNext()) {
                     String outcome = cursor.getString(OutcomeAmount);
                     totalOutcome += Integer.parseInt(outcome);
+
                 }
 
                 System.out.println(totalOutcome);
@@ -110,15 +115,28 @@ public class MainFragment extends Fragment {
             pieDataSet.setValueTextSize(16f);
 
             PieData pieData = new PieData(pieDataSet);
-            pieChart.setData(pieData);
-            pieChart.getDescription().setEnabled(false);
-            pieChart.setCenterText("Debt - Credit");
-            pieChart.setCenterTextSize(18f);
-            pieChart.animate();
+            if (totalOutcome == 0 && totalIncome == 0) {
+                pieChart.setData(pieData);
+                pieChart.getDescription().setEnabled(false);
+                pieChart.setCenterText("Please enter value to create the chart");
+                pieChart.setCenterTextSize(18f);
+                pieChart.animate();
+            } else {
+                pieChart.setData(pieData);
+                pieChart.getDescription().setEnabled(false);
+                pieChart.setCenterText("Debt - Credit");
+                pieChart.setCenterTextSize(18f);
+                pieChart.animate();
+            }
 
 
         return v;
     }
 
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        totalIncome = 0;
+        totalOutcome = 0;
+    }
 }
