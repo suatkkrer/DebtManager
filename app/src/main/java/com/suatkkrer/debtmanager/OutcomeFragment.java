@@ -60,7 +60,7 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
                 int desc = cursor.getColumnIndex("description");
 
                 while (cursor.moveToNext()) {
-                    mOutcome.add(new OutcomeClass(cursor.getString(name), cursor.getString(amount), cursor.getString(desc), R.drawable.outcome, cursor.getInt(idIx),cursor.getString(dateIx)));
+                    mOutcome.add(new OutcomeClass(cursor.getString(name), cursor.getString(amount), cursor.getString(desc), R.drawable.coloreddevaluation, cursor.getInt(idIx),cursor.getString(dateIx)));
                 }
 
                 cursor.close();

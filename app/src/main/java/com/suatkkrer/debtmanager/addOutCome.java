@@ -74,7 +74,7 @@ public class addOutCome extends AppCompatActivity {
                 sqLiteDatabase.execSQL("DELETE FROM outcome WHERE id = " + OutcomeId + "");
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("income", "income");
+                intent.putExtra("outcome", "outcome");
                 startActivity(intent);
             } catch (Exception e){
                 e.printStackTrace();

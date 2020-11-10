@@ -61,7 +61,7 @@ public class IncomeFragment extends Fragment implements IncomeAdapter.OnNoteList
                 int desc = cursor.getColumnIndex("description");
 
                 while (cursor.moveToNext()) {
-                    mIncome.add(new IncomeClass(cursor.getString(name), cursor.getString(amount), cursor.getString(desc), R.drawable.income, cursor.getInt(idIx),cursor.getString(dateIx)));
+                    mIncome.add(new IncomeClass(cursor.getString(name), cursor.getString(amount), cursor.getString(desc), R.drawable.coloredprofit, cursor.getInt(idIx),cursor.getString(dateIx)));
                 }
 
                 cursor.close();

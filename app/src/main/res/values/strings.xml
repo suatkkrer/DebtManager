@@ -4,4 +4,6 @@
     <string name="income">Income</string>
     <string name="outcome">Outcome</string>
     <string name="expense">Expense</string>
+    <string name="credit">Credit</string>
+    <string name="debt">Debt</string>
 </resources>

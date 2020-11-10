@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),0);
 
         viewPagerAdapter.addFragment(mainFragment,"Home Page");
-        viewPagerAdapter.addFragment(incomeFragment,"Income");
-        viewPagerAdapter.addFragment(outcomeFragment,"Expense");
+        viewPagerAdapter.addFragment(incomeFragment,"Credit");
+        viewPagerAdapter.addFragment(outcomeFragment,"Debt");
 
         viewPager.setAdapter(viewPagerAdapter);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.home);
-        tabLayout.getTabAt(1).setIcon(R.drawable.income);
-        tabLayout.getTabAt(2).setIcon(R.drawable.outcome);
+        tabLayout.getTabAt(1).setIcon(R.drawable.profit);
+        tabLayout.getTabAt(2).setIcon(R.drawable.devaluation);
 
         if (fragment != null) {
                 viewPager.setCurrentItem(1);
