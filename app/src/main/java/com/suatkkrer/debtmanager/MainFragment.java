@@ -99,11 +99,10 @@ public class MainFragment extends Fragment {
             }
         }
 
-            Log.e("UTCOMEMEMEME", String.valueOf(totalOutcome));
 
             ArrayList<PieEntry> pieChartArray = new ArrayList<>();
-            pieChartArray.add(new PieEntry(totalIncome, "Credit"));
-            pieChartArray.add(new PieEntry(totalOutcome, "Debt"));
+            pieChartArray.add(new PieEntry(totalIncome, "Total Credit"));
+            pieChartArray.add(new PieEntry(totalOutcome, "Total Debt"));
 
             PieDataSet pieDataSet = new PieDataSet(pieChartArray, "");
             pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
@@ -113,7 +112,7 @@ public class MainFragment extends Fragment {
             PieData pieData = new PieData(pieDataSet);
             pieChart.setData(pieData);
             pieChart.getDescription().setEnabled(false);
-            pieChart.setCenterText("Credit - Debt");
+            pieChart.setCenterText("Debt - Credit");
             pieChart.setCenterTextSize(18f);
             pieChart.animate();
 

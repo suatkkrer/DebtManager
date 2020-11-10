@@ -1,5 +1,6 @@
 package com.suatkkrer.debtmanager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +63,10 @@ public class IncomeFragment extends Fragment implements IncomeAdapter.OnNoteList
                 int desc = cursor.getColumnIndex("description");
 
                 while (cursor.moveToNext()) {
-                    mIncome.add(new IncomeClass(cursor.getString(name), cursor.getString(amount), cursor.getString(desc), R.drawable.coloredprofit, cursor.getInt(idIx),cursor.getString(dateIx)));
+                    int convertedString = Integer.parseInt(cursor.getString(amount));
+                    NumberFormat format = NumberFormat.getNumberInstance();
+                    String s = String.valueOf(format.format(convertedString));
+                    mIncome.add(new IncomeClass(cursor.getString(name), s, cursor.getString(desc), R.drawable.coloredprofit, cursor.getInt(idIx),cursor.getString(dateIx)));
                 }
 
                 cursor.close();

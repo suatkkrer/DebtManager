@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +61,10 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
                 int desc = cursor.getColumnIndex("description");
 
                 while (cursor.moveToNext()) {
-                    mOutcome.add(new OutcomeClass(cursor.getString(name), cursor.getString(amount), cursor.getString(desc), R.drawable.coloreddevaluation, cursor.getInt(idIx),cursor.getString(dateIx)));
+                    int convertedString = Integer.parseInt(cursor.getString(amount));
+                    NumberFormat format = NumberFormat.getNumberInstance();
+                    String s = String.valueOf(format.format(convertedString));
+                    mOutcome.add(new OutcomeClass(cursor.getString(name), s, cursor.getString(desc), R.drawable.coloreddevaluation, cursor.getInt(idIx),cursor.getString(dateIx)));
                 }
 
                 cursor.close();

@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -14,8 +16,11 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class addIncome extends AppCompatActivity {
 
@@ -45,14 +50,46 @@ public class addIncome extends AppCompatActivity {
         incomeName = intent.getStringExtra("nameIncome");
         incomeDesc = intent.getStringExtra("descriptionIncome");
         incomeAmount = intent.getStringExtra("amountIncome");
-        incomeId = intent.getIntExtra("idIncome",-1);
+        incomeId = intent.getIntExtra("idIncome", -1);
 
-        if (incomeId != -1){
+        if (incomeId != -1) {
             deleteButton.setVisibility(View.VISIBLE);
             name.getEditText().setText(incomeName);
             amount.getEditText().setText(incomeAmount);
             description.getEditText().setText(incomeDesc);
         }
+
+        amount.getEditText().addTextChangedListener(new NumberTextWatcherForThousand(amount.getEditText()));
+
+        NumberTextWatcherForThousand.trimCommaOfString(amount.getEditText().getText().toString());
+
+        //       @Override
+//        public void afterTextChanged(Editable s) {
+//            amount.getEditText().removeTextChangedListener(this);
+//
+//            try {
+//                String originalString = s.toString();
+//
+//                Long longval;
+//                if (originalString.contains(",")) {
+//                    originalString = originalString.replaceAll(",", "");
+//                }
+//                longval = Long.parseLong(originalString);
+//
+//                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+//                formatter.applyPattern("#,###,###,###");
+//                String formattedString = formatter.format(longval);
+//
+//                //setting text after format to EditText
+//                amount.getEditText().setText(formattedString);
+//                amount.getEditText().setSelection(amount.getEditText().getText().length());
+//            } catch (NumberFormatException nfe) {
+//                nfe.printStackTrace();
+//            }
+//
+//            amount.getEditText().addTextChangedListener(this);
+//        }
+//    }
 
     }
 
@@ -101,6 +138,7 @@ public class addIncome extends AppCompatActivity {
 
             String nameIncome = name.getEditText().getText().toString();
             String amountIncome = amount.getEditText().getText().toString();
+            amountIncome = amountIncome.replaceAll(",","");
             String descriptionIncome = description.getEditText().getText().toString();
             String dayIncome = dateFormat.format(calendar.getTime());
 
@@ -154,4 +192,5 @@ public class addIncome extends AppCompatActivity {
             startActivity(intent);
         }
         }
+
     }

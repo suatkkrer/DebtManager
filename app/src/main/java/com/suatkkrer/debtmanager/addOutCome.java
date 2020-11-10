@@ -52,7 +52,9 @@ public class addOutCome extends AppCompatActivity {
             description.getEditText().setText(OutcomeDesc);
         }
 
+        amount.getEditText().addTextChangedListener(new NumberTextWatcherForThousand(amount.getEditText()));
 
+        NumberTextWatcherForThousand.trimCommaOfString(amount.getEditText().getText().toString());
     }
 
     public void cancelOutcome(View view) {
@@ -96,6 +98,7 @@ public class addOutCome extends AppCompatActivity {
 
             String nameIncome = name.getEditText().getText().toString();
             String amountIncome = amount.getEditText().getText().toString();
+            amountIncome = amountIncome.replaceAll(",","");
             String descriptionIncome = description.getEditText().getText().toString();
             String dayIncome = dateFormat.format(calendar.getTime());
 
