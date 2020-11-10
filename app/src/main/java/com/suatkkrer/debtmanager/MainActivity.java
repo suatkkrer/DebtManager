@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),0);
 
-        viewPagerAdapter.addFragment(mainFragment,"Home Page");
-        viewPagerAdapter.addFragment(incomeFragment,"Credit");
-        viewPagerAdapter.addFragment(outcomeFragment,"Debt");
+        viewPagerAdapter.addFragment(mainFragment,getString(R.string.mainPage));
+        viewPagerAdapter.addFragment(incomeFragment,getString(R.string.credir));
+        viewPagerAdapter.addFragment(outcomeFragment,getString(R.string.debt));
 
         viewPager.setAdapter(viewPagerAdapter);
 

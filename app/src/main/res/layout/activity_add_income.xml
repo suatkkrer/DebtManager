@@ -43,7 +43,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:id="@+id/nameSurnameIncome"
-        android:hint="Ad - Soyad "
+        android:hint="@string/ad_soyad"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -59,13 +59,14 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:hint="Alınacak Miktar "
+        android:hint="@string/al_nacak_miktar"
         android:id="@+id/moneyAmountIncome"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:inputType="number"
+            android:inputType="numberDecimal"
+            android:maxLength="9"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +77,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:hint="Açıklama "
+        android:hint="@string/a_klama"
         android:id="@+id/descriptionIncome"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -128,7 +129,7 @@
         android:layout_marginEnd="80dp"
         android:onClick="saveIncome"
         android:drawableEnd="@drawable/forward"
-        android:text="Alınacak Miktar Ekle"
+        android:text="@string/al_nacak_miktar_ekle"
         android:textAllCaps="false"
         android:background="@drawable/radius"
         />

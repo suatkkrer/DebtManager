@@ -43,8 +43,6 @@ public class MainFragment extends Fragment {
     int totalIncome = 0;
     int totalOutcome = 0;
 
-    String[] money = {"Credit","Debt"};
-    int[] amount = {totalIncome,totalOutcome};
 
     @Nullable
     @Override
@@ -71,8 +69,8 @@ public class MainFragment extends Fragment {
 
                 while (cursor.moveToNext()) {
                     String income = cursor.getString(incomeAmount);
+                    income = income.replaceAll("\\.","");
                     totalIncome += Integer.parseInt(income);
-
                 }
 
 
@@ -93,6 +91,7 @@ public class MainFragment extends Fragment {
 
                 while (cursor.moveToNext()) {
                     String outcome = cursor.getString(OutcomeAmount);
+                    outcome = outcome.replaceAll("\\.","");
                     totalOutcome += Integer.parseInt(outcome);
 
                 }
@@ -106,8 +105,8 @@ public class MainFragment extends Fragment {
 
 
             ArrayList<PieEntry> pieChartArray = new ArrayList<>();
-            pieChartArray.add(new PieEntry(totalIncome, "Total Credit"));
-            pieChartArray.add(new PieEntry(totalOutcome, "Total Debt"));
+            pieChartArray.add(new PieEntry(totalIncome, getString(R.string.totalCredit)));
+            pieChartArray.add(new PieEntry(totalOutcome, getString(R.string.totalDebt)));
 
             PieDataSet pieDataSet = new PieDataSet(pieChartArray, "");
             pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
@@ -118,13 +117,13 @@ public class MainFragment extends Fragment {
             if (totalOutcome == 0 && totalIncome == 0) {
                 pieChart.setData(pieData);
                 pieChart.getDescription().setEnabled(false);
-                pieChart.setCenterText("Please enter value to create the chart");
+                pieChart.setCenterText(getString(R.string.entervalie));
                 pieChart.setCenterTextSize(18f);
                 pieChart.animate();
             } else {
                 pieChart.setData(pieData);
                 pieChart.getDescription().setEnabled(false);
-                pieChart.setCenterText("Debt - Credit");
+                pieChart.setCenterText(getString(R.string.debtCredit));
                 pieChart.setCenterTextSize(18f);
                 pieChart.animate();
             }

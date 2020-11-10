@@ -99,6 +99,7 @@ public class addOutCome extends AppCompatActivity {
             String nameIncome = name.getEditText().getText().toString();
             String amountIncome = amount.getEditText().getText().toString();
             amountIncome = amountIncome.replaceAll(",","");
+            amountIncome = amountIncome.replaceAll("\\.","");
             String descriptionIncome = description.getEditText().getText().toString();
             String dayIncome = dateFormat.format(calendar.getTime());
 

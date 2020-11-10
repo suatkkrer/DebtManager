@@ -66,42 +66,10 @@ public class addIncome extends AppCompatActivity {
 
         NumberTextWatcherForThousand.trimCommaOfString(amount.getEditText().getText().toString());
 
-        //       @Override
-//        public void afterTextChanged(Editable s) {
-//            amount.getEditText().removeTextChangedListener(this);
-//
-//            try {
-//                String originalString = s.toString();
-//
-//                Long longval;
-//                if (originalString.contains(",")) {
-//                    originalString = originalString.replaceAll(",", "");
-//                }
-//                longval = Long.parseLong(originalString);
-//
-//                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
-//                formatter.applyPattern("#,###,###,###");
-//                String formattedString = formatter.format(longval);
-//
-//                //setting text after format to EditText
-//                amount.getEditText().setText(formattedString);
-//                amount.getEditText().setSelection(amount.getEditText().getText().length());
-//            } catch (NumberFormatException nfe) {
-//                nfe.printStackTrace();
-//            }
-//
-//            amount.getEditText().addTextChangedListener(this);
-//        }
-//    }
-
     }
 
     public void cancelIncome(View view) {
-//       IncomeFragment incomeFragment = new IncomeFragment();
-//        FragmentManager manager = getSupportFragmentManager();
-//        manager.beginTransaction()
-//                .replace(R.id.container,incomeFragment)
-//                .commit();
+
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         intent.putExtra("income","income");
         startActivity(intent);
@@ -144,6 +112,7 @@ public class addIncome extends AppCompatActivity {
             String nameIncome = name.getEditText().getText().toString();
             String amountIncome = amount.getEditText().getText().toString();
             amountIncome = amountIncome.replaceAll(",","");
+            amountIncome = amountIncome.replaceAll("\\.","");
             String descriptionIncome = description.getEditText().getText().toString();
             String dayIncome = dateFormat.format(calendar.getTime());
 

@@ -38,12 +38,20 @@ public class NumberTextWatcherForThousand implements TextWatcher {
             {
 
                 if(value.startsWith(".")){ //adds "0." when only "." is pressed on begining of writting
-                    editText.setText("0.");
+                    editText.setText("");
                 }
+
+                if (value.contains(".")){
+                    String text = editText.getText().toString();
+                    String result = text.substring(0,text.indexOf("."));
+                    editText.setText(result);
+                }
+
                 if(value.startsWith("0") && !value.startsWith("0.")){
                     editText.setText(""); //Prevents "0" while starting but not "0."
 
                 }
+
 
 
                 String str = editText.getText().toString().replaceAll(",", "");
