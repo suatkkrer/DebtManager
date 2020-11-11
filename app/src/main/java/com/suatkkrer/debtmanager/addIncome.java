@@ -98,73 +98,77 @@ public class addIncome extends AppCompatActivity {
 
 
     public void saveIncome(View view) {
+        if (amount.getEditText().getText().toString() != null) {
 
-        if (incomeId == -1) {
+            if (incomeId == -1) {
 
-            SQLiteDatabase sqLiteDatabase = this.openOrCreateDatabase("Income", MODE_PRIVATE, null);
+                SQLiteDatabase sqLiteDatabase = this.openOrCreateDatabase("Income", MODE_PRIVATE, null);
 
-            sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS income(id INTEGER PRIMARY KEY,name TEXT, amount TEXT, description TEXT,date TEXT)");
-
-
-            calendar = Calendar.getInstance();
-            dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-
-            String nameIncome = name.getEditText().getText().toString();
-            String amountIncome = amount.getEditText().getText().toString();
-            amountIncome = amountIncome.replaceAll(",","");
-            amountIncome = amountIncome.replaceAll("\\.","");
-            String descriptionIncome = description.getEditText().getText().toString();
-            String dayIncome = dateFormat.format(calendar.getTime());
-
-            String sql = "INSERT INTO income (name,amount,description,date) VALUES (?,?,?,?)";
+                sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS income(id INTEGER PRIMARY KEY,name TEXT, amount TEXT, description TEXT,date TEXT)");
 
 
-            // sqLiteDatabase.execSQL("INSERT INTO memories (title,memory,date) VALUES ('" + title1 + "','" + memory1 + "','" + day11 + "')");
+                calendar = Calendar.getInstance();
+                dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
-            SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
-            statement.bindString(1, nameIncome);
-            statement.bindString(2, amountIncome);
-            statement.bindString(3, descriptionIncome);
-            statement.bindString(4, dayIncome);
-            statement.execute();
+                String nameIncome = name.getEditText().getText().toString();
+                String amountIncome = amount.getEditText().getText().toString();
+                amountIncome = amountIncome.replaceAll(",", "");
+                amountIncome = amountIncome.replaceAll("\\.", "");
+                String descriptionIncome = description.getEditText().getText().toString();
+                String dayIncome = dateFormat.format(calendar.getTime());
+
+                String sql = "INSERT INTO income (name,amount,description,date) VALUES (?,?,?,?)";
 
 
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra("income", "income");
-            startActivity(intent);
+                // sqLiteDatabase.execSQL("INSERT INTO memories (title,memory,date) VALUES ('" + title1 + "','" + memory1 + "','" + day11 + "')");
+
+                SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
+                statement.bindString(1, nameIncome);
+                statement.bindString(2, amountIncome);
+                statement.bindString(3, descriptionIncome);
+                statement.bindString(4, dayIncome);
+                statement.execute();
+
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("income", "income");
+                startActivity(intent);
+            } else {
+                SQLiteDatabase sqLiteDatabase = this.openOrCreateDatabase("Income", MODE_PRIVATE, null);
+
+                sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS income(id INTEGER PRIMARY KEY,name TEXT, amount TEXT, description TEXT,date TEXT)");
+
+
+                calendar = Calendar.getInstance();
+                dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+                String nameIncome = name.getEditText().getText().toString();
+                String amountIncome = amount.getEditText().getText().toString();
+                String descriptionIncome = description.getEditText().getText().toString();
+                String dayIncome = dateFormat.format(calendar.getTime());
+
+                String sql = "INSERT INTO income (name,amount,description,date) VALUES (?,?,?,?)";
+
+
+                // sqLiteDatabase.execSQL("INSERT INTO memories (title,memory,date) VALUES ('" + title1 + "','" + memory1 + "','" + day11 + "')");
+
+                SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
+                statement.bindString(1, nameIncome);
+                statement.bindString(2, amountIncome);
+                statement.bindString(3, descriptionIncome);
+                statement.bindString(4, dayIncome);
+                statement.execute();
+
+                sqLiteDatabase.execSQL("DELETE FROM income WHERE id = " + incomeId + "");
+
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("income", "income");
+                startActivity(intent);
+            }
         } else {
-            SQLiteDatabase sqLiteDatabase = this.openOrCreateDatabase("Income", MODE_PRIVATE, null);
-
-            sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS income(id INTEGER PRIMARY KEY,name TEXT, amount TEXT, description TEXT,date TEXT)");
-
-
-            calendar = Calendar.getInstance();
-            dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-
-            String nameIncome = name.getEditText().getText().toString();
-            String amountIncome = amount.getEditText().getText().toString();
-            String descriptionIncome = description.getEditText().getText().toString();
-            String dayIncome = dateFormat.format(calendar.getTime());
-
-            String sql = "INSERT INTO income (name,amount,description,date) VALUES (?,?,?,?)";
-
-
-            // sqLiteDatabase.execSQL("INSERT INTO memories (title,memory,date) VALUES ('" + title1 + "','" + memory1 + "','" + day11 + "')");
-
-            SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
-            statement.bindString(1, nameIncome);
-            statement.bindString(2, amountIncome);
-            statement.bindString(3, descriptionIncome);
-            statement.bindString(4, dayIncome);
-            statement.execute();
-
-            sqLiteDatabase.execSQL("DELETE FROM income WHERE id = " + incomeId + "");
-
-
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra("income", "income");
-            startActivity(intent);
+            Toast.makeText(this, getString(R.string.amountofMonet), Toast.LENGTH_SHORT).show();
         }
-        }
+    }
 
     }

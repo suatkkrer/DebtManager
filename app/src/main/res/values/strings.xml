@@ -18,4 +18,5 @@
     <string name="al_nacak_miktar_ekle">Add Credit</string>
     <string name="verilecek_miktar">Debt Amount</string>
     <string name="bor_ekle">Add Debt</string>
+    <string name="amountofMonet">Please Enter Amount of Money</string>
 </resources>

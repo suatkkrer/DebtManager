@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -86,6 +87,8 @@ public class addOutCome extends AppCompatActivity {
 
     public void saveOutcome(View view) {
 
+        if (amount.getEditText().getText().toString() != null){
+
         if (OutcomeId == -1) {
 
             SQLiteDatabase sqLiteDatabase = this.openOrCreateDatabase("Outcome", MODE_PRIVATE, null);
@@ -151,6 +154,10 @@ public class addOutCome extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("outcome", "outcome");
             startActivity(intent);
+        }
+        }
+        else {
+            Toast.makeText(this, getString(R.string.amountofMonet), Toast.LENGTH_SHORT).show();
         }
     }
 }
