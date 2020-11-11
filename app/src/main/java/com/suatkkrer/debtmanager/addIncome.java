@@ -98,7 +98,7 @@ public class addIncome extends AppCompatActivity {
 
 
     public void saveIncome(View view) {
-        if (amount.getEditText().getText().toString() != null) {
+        if (!amount.getEditText().getText().toString().equals("")){
 
             if (incomeId == -1) {
 

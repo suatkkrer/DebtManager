@@ -87,7 +87,7 @@ public class addOutCome extends AppCompatActivity {
 
     public void saveOutcome(View view) {
 
-        if (amount.getEditText().getText().toString() != null){
+        if (!amount.getEditText().getText().toString().equals("")){
 
         if (OutcomeId == -1) {
 

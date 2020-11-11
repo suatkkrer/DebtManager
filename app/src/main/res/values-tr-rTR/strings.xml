@@ -19,4 +19,5 @@
     <string name="al_nacak_miktar_ekle">Alınacak Miktar Ekle</string>
     <string name="verilecek_miktar">Verilecek Miktar</string>
     <string name="bor_ekle">Borç Ekle</string>
+    <string name="amountofMonet">Lütfen Para Miktarı Ekleyin</string>
 </resources>
