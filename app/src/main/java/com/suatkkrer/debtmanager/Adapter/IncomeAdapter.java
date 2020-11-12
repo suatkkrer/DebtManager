@@ -1,4 +1,4 @@
-package com.suatkkrer.debtmanager;
+package com.suatkkrer.debtmanager.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.suatkkrer.debtmanager.Model.IncomeClass;
+import com.suatkkrer.debtmanager.R;
+
 import java.util.List;
 
-public class OutcomeAdapter extends RecyclerView.Adapter<OutcomeAdapter.ViewHolder> {
-    private List<OutcomeClass> mData;
+public class IncomeAdapter extends RecyclerView.Adapter<IncomeAdapter.ViewHolder> {
+    private List<IncomeClass> mData;
     private OnNoteListener mOnNoteListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -22,10 +25,10 @@ public class OutcomeAdapter extends RecyclerView.Adapter<OutcomeAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.iconViewVerecek);
-            name = itemView.findViewById(R.id.nameVerecek);
-            date = itemView.findViewById(R.id.dateVerecek);
-            amount = itemView.findViewById(R.id.paraVerecek);
+            imageView = itemView.findViewById(R.id.iconViewAlacak);
+            name = itemView.findViewById(R.id.nameAlacak);
+            date = itemView.findViewById(R.id.tarihAlacak);
+            amount = itemView.findViewById(R.id.paraAlacak);
             this.onNoteListener = onNoteListener;
 
             itemView.setOnClickListener(this);
@@ -37,7 +40,7 @@ public class OutcomeAdapter extends RecyclerView.Adapter<OutcomeAdapter.ViewHold
         }
     }
 
-    public OutcomeAdapter(List<OutcomeClass> incomeClasses, OnNoteListener onNoteListener) {
+    public IncomeAdapter(List<IncomeClass> incomeClasses, OnNoteListener onNoteListener) {
         this.mData = incomeClasses;
         this.mOnNoteListener = onNoteListener;
     }
@@ -45,14 +48,14 @@ public class OutcomeAdapter extends RecyclerView.Adapter<OutcomeAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.debts,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.items,parent,false);
         ViewHolder viewHolder = new ViewHolder(v,mOnNoteListener);
         return  viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        OutcomeClass currentItem = mData.get(position);
+        IncomeClass currentItem = mData.get(position);
         holder.imageView.setImageResource(currentItem.getIcon());
         holder.name.setText(currentItem.getName());
         holder.date.setText(currentItem.getDate());

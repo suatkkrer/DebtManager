@@ -1,4 +1,4 @@
-package com.suatkkrer.debtmanager;
+package com.suatkkrer.debtmanager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.suatkkrer.debtmanager.Model.NumberTextWatcherForThousand;
+import com.suatkkrer.debtmanager.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -1,4 +1,4 @@
-package com.suatkkrer.debtmanager;
+package com.suatkkrer.debtmanager.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +13,10 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.suatkkrer.debtmanager.Fragment.IncomeFragment;
+import com.suatkkrer.debtmanager.Fragment.MainFragment;
+import com.suatkkrer.debtmanager.Fragment.OutcomeFragment;
+import com.suatkkrer.debtmanager.R;
 
 import java.util.ArrayList;
 import java.util.List;

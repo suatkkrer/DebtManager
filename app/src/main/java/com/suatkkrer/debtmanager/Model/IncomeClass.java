@@ -1,21 +1,21 @@
-package com.suatkkrer.debtmanager;
+package com.suatkkrer.debtmanager.Model;
 
-public class OutcomeClass {
+public class IncomeClass {
 
     String name,amount, description,date;
     int id;
     int icon;
 
-    public OutcomeClass() {
+    public IncomeClass() {
     }
 
-    public OutcomeClass(String name, String amount, String description, int icon, int id, String date) {
+    public IncomeClass(String name, String amount, String description, int icon, int id,String date) {
         this.name = name;
         this.amount = amount;
         this.description = description;
-        this.date = date;
         this.icon = icon;
         this.id = id;
+        this.date = date;
     }
 
     public String getDate() {

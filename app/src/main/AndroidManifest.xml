@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DebtManager">
-        <activity android:name=".addOutCome"></activity>
-        <activity android:name=".addIncome" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.addOutCome"></activity>
+        <activity android:name=".Activities.addIncome" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

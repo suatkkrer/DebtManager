@@ -1,4 +1,4 @@
-package com.suatkkrer.debtmanager;
+package com.suatkkrer.debtmanager.Model;
 
 import android.text.Editable;
 import android.text.TextWatcher;

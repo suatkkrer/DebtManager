@@ -1,4 +1,4 @@
-package com.suatkkrer.debtmanager;
+package com.suatkkrer.debtmanager.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.suatkkrer.debtmanager.Adapter.IncomeAdapter;
+import com.suatkkrer.debtmanager.Model.IncomeClass;
+import com.suatkkrer.debtmanager.R;
+import com.suatkkrer.debtmanager.Activities.addIncome;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -29,35 +33,35 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 import static android.content.Context.MODE_PRIVATE;
 
-
-public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteListener{
+public class IncomeFragment extends Fragment implements IncomeAdapter.OnNoteListener {
 
     View v;
     Context thisContext;
-    CoordinatorLayout coordinatorLayout;
     FloatingActionButton floatingActionButton;
-    List<OutcomeClass> mOutcome;
+    CoordinatorLayout coordinatorLayout;
+    List<IncomeClass> mIncome;
     RecyclerView recyclerView;
-    OutcomeAdapter adapter;
+    IncomeAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         thisContext = container.getContext();
-        v = inflater.inflate(R.layout.outcomefragment,container,false);
+        v = inflater.inflate(R.layout.incomefragment,container,false);
 
-        floatingActionButton = v.findViewById(R.id.fb_button);
-        recyclerView = v.findViewById(R.id.debtRecycler);
+        floatingActionButton = v.findViewById(R.id.incomeFloating);
+        recyclerView = v.findViewById(R.id.incomeRecycler);
 
-        if (mOutcome.size() == 0) {
+
+        if (mIncome.size() == 0) {
             try {
-                SQLiteDatabase sqLiteDatabase = thisContext.openOrCreateDatabase("Outcome", MODE_PRIVATE, null);
+                SQLiteDatabase sqLiteDatabase = thisContext.openOrCreateDatabase("Income", MODE_PRIVATE, null);
 
-                sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS outcome(id INTEGER PRIMARY KEY,name TEXT, amount TEXT, description TEXT,date TEXT)");
+                sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS income(id INTEGER PRIMARY KEY,name TEXT, amount TEXT, description TEXT,date TEXT)");
 
 
-                Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM outcome", null);
+                Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM income", null);
 
                 int name = cursor.getColumnIndex("name");
                 int amount = cursor.getColumnIndex("amount");
@@ -69,7 +73,7 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
                     int convertedString = Integer.parseInt(cursor.getString(amount));
                     NumberFormat format = NumberFormat.getNumberInstance();
                     String s = String.valueOf(format.format(convertedString));
-                    mOutcome.add(new OutcomeClass(cursor.getString(name), s, cursor.getString(desc), R.drawable.coloreddevaluation, cursor.getInt(idIx),cursor.getString(dateIx)));
+                    mIncome.add(new IncomeClass(cursor.getString(name), s, cursor.getString(desc), R.drawable.coloredprofit, cursor.getInt(idIx),cursor.getString(dateIx)));
                 }
 
                 cursor.close();
@@ -81,7 +85,7 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
 
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
-        adapter = new OutcomeAdapter(mOutcome,this);
+        adapter = new IncomeAdapter(mIncome,this);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -89,8 +93,8 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(),addOutCome.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(thisContext, addIncome.class);
                 startActivity(intent);
             }
         });
@@ -100,6 +104,7 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
 
         return v;
     }
+
 
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
         @Override
@@ -114,19 +119,20 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
 
             int position = viewHolder.getAdapterPosition();
 
-            switch (direction){
-                case ItemTouchHelper.LEFT:
-                    SQLiteDatabase sqLiteDatabase = thisContext.openOrCreateDatabase("Outcome", MODE_PRIVATE, null);
+                switch (direction){
+                    case ItemTouchHelper.LEFT:
+                        SQLiteDatabase sqLiteDatabase = thisContext.openOrCreateDatabase("Income", MODE_PRIVATE, null);
 
-                    sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS outcome(id INTEGER PRIMARY KEY,name TEXT, amount TEXT, description TEXT,date TEXT)");
+                        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS income(id INTEGER PRIMARY KEY,name TEXT, amount TEXT, description TEXT,date TEXT)");
 
 
-                    sqLiteDatabase.execSQL("DELETE FROM outcome WHERE id = " + mOutcome.get(position).getId() + "");
-                    mOutcome.remove(position);
-                    adapter.notifyItemRemoved(position);
+                        sqLiteDatabase.execSQL("DELETE FROM income WHERE id = " + mIncome.get(position).getId() + "");
+                        mIncome.remove(position);
+                        adapter.notifyItemRemoved(position);
 
-                    break;
-            }
+
+                        break;
+                }
         }
 
         @Override
@@ -141,21 +147,22 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
     };
 
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mOutcome = new ArrayList<>();
+        mIncome = new ArrayList<>();
 
     }
 
     @Override
     public void onNoteClick(int position) {
-        Intent intent = new Intent(getContext(),addOutCome.class);
-        intent.putExtra("nameOutcome",mOutcome.get(position).getName());
-        intent.putExtra("descriptionOutcome",mOutcome.get(position).getDescription());
-        intent.putExtra("amountOutcome",mOutcome.get(position).getAmount());
-        intent.putExtra("idOutcome",mOutcome.get(position).getId());
+        Intent intent = new Intent(getContext(),addIncome.class);
+        intent.putExtra("nameIncome",mIncome.get(position).getName());
+        intent.putExtra("descriptionIncome",mIncome.get(position).getDescription());
+        intent.putExtra("amountIncome",mIncome.get(position).getAmount());
+        intent.putExtra("idIncome",mIncome.get(position).getId());
         startActivity(intent);
     }
 }

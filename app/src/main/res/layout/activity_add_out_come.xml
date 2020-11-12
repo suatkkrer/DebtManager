@@ -6,7 +6,7 @@
     android:background="#f3f3f3"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".addOutCome">
+    tools:context=".Activities.addOutCome">
 
     <RelativeLayout
         android:layout_width="match_parent"
