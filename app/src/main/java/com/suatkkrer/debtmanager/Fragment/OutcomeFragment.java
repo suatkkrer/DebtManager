@@ -38,7 +38,6 @@ public class OutcomeFragment extends Fragment implements OutcomeAdapter.OnNoteLi
 
     View v;
     Context thisContext;
-    CoordinatorLayout coordinatorLayout;
     FloatingActionButton floatingActionButton;
     List<OutcomeClass> mOutcome;
     RecyclerView recyclerView;

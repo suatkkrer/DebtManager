@@ -38,8 +38,6 @@ public class MainFragment extends Fragment {
 
     View v;
     Context thisContext;
-    CoordinatorLayout coordinatorLayout;
-    AnyChartView anyChartView;
     PieChart pieChart;
     int totalIncome = 0;
     int totalOutcome = 0;
