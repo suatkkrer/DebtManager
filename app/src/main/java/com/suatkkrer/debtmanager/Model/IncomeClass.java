@@ -22,9 +22,6 @@ public class IncomeClass {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getName() {
         return name;
@@ -38,9 +35,6 @@ public class IncomeClass {
         return amount;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
 
     public String getDescription() {
         return description;
