@@ -40,9 +40,6 @@ public class IncomeClass {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public int getId() {
         return id;
@@ -56,7 +53,4 @@ public class IncomeClass {
         return icon;
     }
 
-    public void setIcon(int icon) {
-        this.icon = icon;
-    }
 }
