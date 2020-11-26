@@ -115,8 +115,6 @@ public class IncomeFragment extends Fragment implements IncomeAdapter.OnNoteList
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
-            MainFragment mainFragment = new MainFragment();
-
             int position = viewHolder.getAdapterPosition();
 
                 switch (direction){
