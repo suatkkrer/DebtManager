@@ -38,7 +38,6 @@ public class IncomeFragment extends Fragment implements IncomeAdapter.OnNoteList
     View v;
     Context thisContext;
     FloatingActionButton floatingActionButton;
-    CoordinatorLayout coordinatorLayout;
     List<IncomeClass> mIncome;
     RecyclerView recyclerView;
     IncomeAdapter adapter;
